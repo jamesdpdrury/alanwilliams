@@ -315,3 +315,8 @@ nav a li {
 .video {
     width: 30%;
 }
+.videoPlayer {
+    aspect-ratio: 16 / 9;
+	height: 100%;
+	width: 100%;
+}
