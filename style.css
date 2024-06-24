@@ -1,0 +1,317 @@
+body {
+    font-family: "Poiret One", sans-serif;    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    background-color: #000000;
+}
+html {
+    margin: 0;
+    padding: 0;
+}
+a {
+    text-decoration: none;
+    color: #ffffff;
+}
+h1, h2 {
+    text-transform: uppercase;
+    margin: 0;
+    width: 100%;
+    font-family: "Poiret One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+.album img {
+    width: 100%;
+}
+
+.credit {
+    width: 100%;
+    margin-bottom: 8px;
+}
+.credit div {
+    display: inline-block;
+}
+
+
+#home {
+    background-image: url(images/OliviersBG.JPG);
+    background-position: top center;
+}
+
+#home .logo{
+    position: absolute;
+    bottom: 100px;
+    left: 100px;
+    font-family: "Poiret One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+    font-size: 100px;
+    line-height: 1;
+    color: #ffffff;
+}
+#home .logo .tagline {
+    margin: 10px 0 0 0;
+    height: fit-content;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#home .logo .tagline span{
+    font-size: 20px;
+
+}
+
+
+nav {
+    width: 100%;
+    z-index: 1;
+    position: fixed;
+    bottom: 0;
+    padding-bottom: 5px;
+    padding-top: 40px;
+    background: none;
+    background: rgb(0,0,0);
+    background: linear-gradient(0deg, rgba(0,0,0,1) 50%, rgba(255,255,255,0) 100%);}
+nav ul {
+    margin: 20px auto;
+    padding: 0;
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border-top: 1px solid #ffffff;
+}
+nav a li {
+    list-style: none;
+    text-transform: uppercase;
+    font-size: 15px;
+    color: #ffffff;
+    margin-top: 10px;
+}
+.review1 {
+    background-image: url(images/SB_BG.jpg);
+}
+.review1 .quote {
+    width: 95%;
+    max-width: 900px;
+    position: absolute;
+    bottom: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    font-size: 30px;
+    display: inline;
+    padding: 0.5em;
+}
+.review1 .quote::after {
+    content: "";
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #df212b;
+    opacity: .85;
+    position: absolute;
+    z-index: -5;
+}
+.review1 .quote span {
+    display: block;
+    font-size: 20px;
+    margin-top: 10px;
+}
+.review1::after {
+    content: "";
+    width: 100%;
+    height: 50px;
+    background: rgb(0, 0, 0);
+    background: linear-gradient(0deg, rgba(0, 0, 0, 1) 50%, rgba(255, 255, 255, 0) 100%);
+    position: absolute;
+    z-index: 0;
+    display: block;
+    bottom: 0;
+}
+.review1::before {
+    content: "";
+    width: 100%;
+    height: 50px;
+    background: rgb(0, 0, 0);
+    background: linear-gradient(0deg, rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 1) 100%);
+    position: absolute;
+    z-index: 0;
+    display: block;
+    top: 0;
+}
+.section {
+    width: 100%;
+    min-height: calc(100vh - 60px);
+    padding: 30px 0;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+}
+#home::after {
+    content: "";
+    width: 100%;
+    height: 50px;
+    background: rgb(0, 0, 0);
+    background: linear-gradient(0deg, rgba(0, 0, 0, 1) 50%, rgba(255, 255, 255, 0) 100%);
+    position: absolute;
+    z-index: 0;
+    display: block;
+    bottom: 0;
+}
+.section_content {
+    width: 90%;
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    color: #ffffff;
+    line-height: 1.3;
+}
+.slider-wrapper {
+    margin: 1rem 0;
+    position: relative;
+    overflow: hidden;
+    z-index: 0;
+    width: 100%;
+  }
+  
+  .slides-container {
+    height: fit-content;
+    width: 100%;
+    display: flex;
+    overflow: scroll;
+    scroll-behavior: smooth;
+    list-style: none;
+    margin: 0 0 50px;
+    padding: 0;
+  }
+  #slides-container-3 {
+    height: 300px;
+  }
+  #slides-container-3 .slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  #slides-container-3 .slide:nth-child(2) {
+    background-color: #0597ff;
+  }
+  #slides-container-3 .slide:nth-child(3) {
+    background-color: #2db45d;
+  }
+  #slides-container-3 .slide:nth-child(4) {
+    background-color: #b4872d;
+  }
+  #slides-container-3 .slide:nth-child(5) {
+    background-color: #2d48b4;
+  }
+  #slides-container-3 .slide:nth-child(6) {
+    background-color: #b42db4;
+  }
+  #slides-container-3 .slide:nth-child(7) {
+    background-color: #b42d2d;
+  }
+  #slides-container-3 .slide:nth-child(8) {
+    background-color: #a7b42d;
+  }
+  #slides-container-3 .slide h2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+  }
+  #slides-container-3 .slide .title {
+    font-size: 30px;
+  }
+  #slides-container-4 .slide {
+    flex: 1 0 50%;
+  }
+  #slides-container-5 .slide {
+    flex: 1 0 33.33%;
+  }
+  
+  .slide-arrow {
+    position: absolute;
+    display: flex;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    height: 4rem;
+    background-color: white;
+    border: none;
+    width: 2rem;
+    font-size: 3rem;
+    padding: 0;
+    cursor: pointer;
+    opacity: 0.5;
+    transition: opacity 100ms;
+  }
+  
+  .slide-arrow:hover,
+  .slide-arrow:focus {
+    opacity: 1;
+  }
+  
+  #slide-arrow-prev-1, #slide-arrow-prev-2, #slide-arrow-prev-3, #slide-arrow-prev-4 {
+    left: 0;
+    padding-left: 0.25rem;
+    border-radius: 0 2rem 2rem 0;
+  }
+  
+  #slide-arrow-next-1,  #slide-arrow-next-2,  #slide-arrow-next-3, #slide-arrow-next-4 {
+    right: 0;
+    padding-left: 0.75rem;
+    border-radius: 2rem 0 0 2rem;
+  }
+  
+  .slide {
+    width: 200px;
+    height: 100%;
+    flex: 1 0 25%;
+    text-align: center;
+  }
+  .slide h2 {
+    transform: rotate(270deg);
+    position: relative;
+    top: 100px;
+    font-size: 40px;
+  }
+  .slide p {
+    font-size: 15px;
+  }
+  .slide .notes {
+    font-size: 15px;
+    background-color: #df212b;
+    padding: 5px;
+    margin-top: 5px;
+}
+.slide .role {
+    font-size: 15px;
+}
+.slide .theatre {
+    font-style: italic;
+    font-size: 17px;
+    
+}
+.slide .title {
+    text-transform: uppercase;
+}
+
+.subsection {
+    margin-top: 60px;
+    width: 100%;
+}
+.video {
+    width: 30%;
+}
