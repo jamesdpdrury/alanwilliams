@@ -20,19 +20,79 @@ h1, h2 {
     font-weight: 400;
     font-style: normal;
     font-display: swap;
+    text-align: center;
+    color: #ffffff;
 }
 .album img {
     width: 100%;
 }
+#contact .section_content {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
 
 .credit {
-    width: 100%;
-    margin-bottom: 8px;
+    position: absolute;
+    color: #ffffff;
+    font-size: 12px;
+    bottom: 86px;
+    z-index: 1;
+    right: 50%;
+    width: fit-content;
+    transform: translateX(50%);
 }
 .credit div {
     display: inline-block;
 }
-
+#gallery {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.gallery_holder {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    height: fit-content;
+}
+.gallery_holder .photo {
+    width: 20%;
+    aspect-ratio: 1;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    transition: 0.5s;
+}
+.gallery_holder .photo:hover {
+    opacity: .75;
+}
+.gallery_holder .photo:nth-child(1){
+    background-image: url(images/Gallery/59BE90A9-E890-4CD8-A6DA-F64EF796E176.JPG);
+}
+.gallery_holder .photo:nth-child(2){
+    background-image: url(images/Gallery/a37011c3-91dc-42f4-b40c-b89f4ecdba2b\ \(1\).JPG);
+}
+.gallery_holder .photo:nth-child(3){
+    background-image: url(images/Gallery/BBAA960D-86CF-4264-9795-CD6FE6DC9EC5.PNG);
+}
+.gallery_holder .photo:nth-child(4){
+    background-image: url(images/Gallery/CFTcfy2022JP_00073\ \(C\)\ Johan\ Persson.JPG);
+}
+.gallery_holder .photo:nth-child(5){
+    background-image: url(images/Gallery/IMG_4048\ \(1\).JPG);
+}
+.gallery_holder .photo:nth-child(6){
+    background-image: url(images/Gallery/IMG_5286.jpg);
+}
+.gallery_holder .photo:nth-child(7){
+    background-image: url(images/Gallery/Screenshot\ 2024-04-16\ at\ 07.22.56\ \(1\).JPEG);
+}
+.gallery_holder .photo:nth-child(8){
+    background-image: url(images/Gallery/IMG_4702.PNG);
+}
 
 #home {
     background-image: url(images/OliviersBG.JPG);
@@ -96,35 +156,47 @@ nav a li {
 .review1 {
     background-image: url(images/SB_BG.jpg);
 }
-.review1 .quote {
+.review2 {
+    background-image: url(images/Evita_BG.jpg);
+}
+.review3 {
+    background-image: url(images/CFY_BG.jpg);
+}
+.review1 .quote, .review2 .quote, .review3 .quote {
     width: 95%;
     max-width: 900px;
     position: absolute;
-    bottom: 20%;
+    bottom: 50%;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translate(-50%, 50%);
     text-align: center;
     font-size: 30px;
     display: inline;
     padding: 0.5em;
+    color: #ffffff;
 }
-.review1 .quote::after {
+.review1 .quote::after, .review2 .quote::after, .review3 .quote::after {
     content: "";
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: #df212b;
-    opacity: .85;
+    background-color: #00000033;    filter: blur(10px);
     position: absolute;
     z-index: -5;
 }
-.review1 .quote span {
+.review2 .quote::after {
+    background-color: #000000ba;
+}
+.review1 .quote span, .review2 .quote span, .review3 .quote span {
     display: block;
     font-size: 20px;
     margin-top: 10px;
 }
-.review1::after {
+.review1, .review2, .review3 {
+    height: calc(100vh + 100px);
+}
+.review1::after, .review2::after, .review3::after {
     content: "";
     width: 100%;
     height: 50px;
@@ -135,7 +207,7 @@ nav a li {
     display: block;
     bottom: 0;
 }
-.review1::before {
+.review1::before, .review2::before, .review3::before {
     content: "";
     width: 100%;
     height: 50px;
@@ -165,7 +237,7 @@ nav a li {
     position: absolute;
     z-index: 0;
     display: block;
-    bottom: 0;
+    bottom: -1px;
 }
 .section_content {
     width: 90%;
@@ -195,6 +267,7 @@ nav a li {
     list-style: none;
     margin: 0 0 50px;
     padding: 0;
+    color: #ffffff;
   }
   #slides-container-3 {
     height: 300px;
@@ -235,10 +308,10 @@ nav a li {
     font-size: 30px;
   }
   #slides-container-4 .slide {
-    flex: 1 0 50%;
+    flex: 1 0 33.3%;
   }
   #slides-container-5 .slide {
-    flex: 1 0 33.33%;
+    flex: 1 0 33.333;
   }
   
   .slide-arrow {
@@ -278,7 +351,7 @@ nav a li {
   .slide {
     width: 200px;
     height: 100%;
-    flex: 1 0 25%;
+    flex: 1 0 12.5%;
     text-align: center;
   }
   .slide h2 {
