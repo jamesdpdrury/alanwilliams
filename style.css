@@ -12,6 +12,12 @@ a {
     text-decoration: none;
     color: #ffffff;
 }
+a.anchor {
+    display: block;
+    position: relative;
+    top: -50px;
+    visibility: hidden;
+}
 h1, h2 {
     text-transform: uppercase;
     margin: 0;
@@ -26,12 +32,21 @@ h1, h2 {
 .album img {
     width: 100%;
 }
+.apple {    width: fit-content;
+    margin: 0 auto;
+    background-color: #FA2D48!important;display: inline-block;}
 #contact .section_content {
     display: flex;
     align-items: center;
     justify-content: space-around;
 }
-
+.contactlinks {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 75vh;
+    width: 100%;
+}
 .credit {
     position: absolute;
     color: #ffffff;
@@ -125,7 +140,9 @@ h1, h2 {
 
 }
 
-
+.js-scroll {opacity: 0;transition: opacity 500ms;}
+.js-scroll.scrolled {opacity: 1;}
+.mobile {display: none;}
 nav {
     width: 100%;
     z-index: 1;
@@ -368,6 +385,13 @@ nav a li {
     background-color: #df212b;
     padding: 5px;
     margin-top: 5px;
+    transition: .5s;
+}
+.slide a {
+    cursor: pointer;
+}
+.slide a:hover .notes {
+    background-color: blue;
 }
 .slide .role {
     font-size: 15px;
@@ -380,7 +404,9 @@ nav a li {
 .slide .title {
     text-transform: uppercase;
 }
-
+.spotify {    width: fit-content;
+    margin: 0 auto;
+    background-color: #1db954!important;display: inline-block;}
 .subsection {
     margin-top: 60px;
     width: 100%;
@@ -392,4 +418,16 @@ nav a li {
     aspect-ratio: 16 / 9;
 	height: 100%;
 	width: 100%;
+}
+
+@media screen and (max-width: 450px) {
+    body {font-size: 15px;}
+    h1 {font-size: 1.75em;}
+    #home {background-size: 137%;}
+    #home .logo { left: 0;width: 100%;font-size: 70px; text-align: center;}
+    #home .logo .tagline {flex-wrap: wrap;margin-top: 50px;}
+    #home .logo .tagline span {width: 100%;}
+    .mobile {display: block;}
+   
+    .slides-container .slide:first-child {display: none;}
 }
