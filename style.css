@@ -384,7 +384,7 @@ nav a li {
     font-size: 15px;
     background-color: #df212b;
     padding: 5px;
-    margin-top: 5px;
+    margin: 5px auto 0;
     transition: .5s;
 }
 .slide a {
@@ -421,13 +421,23 @@ nav a li {
 }
 
 @media screen and (max-width: 450px) {
-    body {font-size: 15px;}
+    body {font-size: 15px;color: #ffffff;}
+    .contactlinks {flex-wrap: wrap;min-height: 20vh;margin-bottom: 300px;}
+    .contactlinks a {width: 100%; text-align: center;}
+    .credit {width: 90%; text-align: center;}
+    .gallery_holder {margin: 100px auto 150px;}
+    .gallery_holder .photo {width: 50%;}
     h1 {font-size: 1.75em;}
-    #home {background-size: 137%;}
-    #home .logo { left: 0;width: 100%;font-size: 70px; text-align: center;}
+    h2 {font-size: 1.25em;}
+    #home {background-size: 137%;min-height: calc(100vh - 60px);}
+    #home .logo { left: 0;width: 100%;font-size: 70px; text-align: center;bottom: 150px;}
     #home .logo .tagline {flex-wrap: wrap;margin-top: 50px;}
     #home .logo .tagline span {width: 100%;}
     .mobile {display: block;}
-   
-    .slides-container .slide:first-child {display: none;}
+    .section {min-height: 0; padding: 0;}
+    .slides-container .slide:first-child, .slide-arrow {display: none;}
+    .slide {flex: 1 0 50%;}
+    #slides-container-4 .slide {
+        flex: 1 0 100%;
+    }
 }
