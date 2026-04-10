@@ -121,34 +121,115 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     /***********************
-     * PHOTOS (Randomized Gallery)
+     * PHOTOS (NEW ADVANCED GALLERY)
      ***********************/
     const galleryEl = document.getElementById("photoGallery");
+    const galleryTitle = document.getElementById("galleryTitle");
+    const backBtn = document.getElementById("backButton");
+
+    const albumMenu = document.createElement("div");
+    albumMenu.className = "album-menu fade show";
+    galleryEl.before(albumMenu);
+
     const photoArray = [];
+    const albumsMap = {};
 
-    let shuffledPhotos = shuffleArray(photos.slice(1));
+    // GROUP PHOTOS
+    photos.slice(1).forEach(p => {
+      const file = p[0];
+      const caption = p[1] || "";
+      const album = p[2] || "Uncategorised";
 
-    shuffledPhotos.forEach((p, i) => {
-      galleryEl.insertAdjacentHTML("beforeend", `
-        <div class="photo"
-             style="background-image:url('/images/Gallery/${p[0]}')"
-             data-src="/images/Gallery/${p[0]}"
-             data-caption="${p[1] || ""}"
-             data-index="${i}">
-        </div>
-      `);
-      photoArray.push({src: `/images/Gallery/${p[0]}`, caption: p[1] || ""});
+      if (!albumsMap[album]) albumsMap[album] = [];
+      albumsMap[album].push({ file, caption, album });
+    });
+
+    // BUILD ALBUM TILES
+    Object.keys(albumsMap).forEach(albumName => {
+      const firstImage = albumsMap[albumName][0];
+      const coverPath = `/images/Gallery/${albumName}/${firstImage.file}`;
+
+      const tile = document.createElement("div");
+      tile.className = "album-tile";
+      tile.style.backgroundImage = `url('${coverPath}')`;
+
+      tile.innerHTML = `
+        <div class="album-label">${albumName}</div>
+        <div class="album-count">${albumsMap[albumName].length}</div>
+      `;
+
+      tile.addEventListener("click", () => showAlbum(albumName));
+      albumMenu.appendChild(tile);
+    });
+
+    function showAlbum(albumName) {
+      if (window.innerWidth <= 450) {
+  galleryTitle.innerHTML = `Gallery<br>${albumName}`;
+} else {
+  galleryTitle.textContent = `Gallery - ${albumName}`;
+}
+      backBtn.style.display = "block";
+
+      albumMenu.classList.remove("show");
+
+      setTimeout(() => {
+        albumMenu.style.display = "none";
+        galleryEl.innerHTML = "";
+        galleryEl.classList.add("fade");
+
+        photoArray.length = 0;
+
+        let shuffled = shuffleArray([...albumsMap[albumName]]);
+
+        shuffled.forEach((p, i) => {
+          const imgPath = `/images/Gallery/${p.album}/${p.file}`;
+
+          galleryEl.insertAdjacentHTML("beforeend", `
+            <div class="photo"
+                 style="background-image:url('${imgPath}')"
+                 data-src="${imgPath}"
+                 data-caption="${p.caption}"
+                 data-index="${i}">
+            </div>
+          `);
+
+          photoArray.push({ src: imgPath, caption: p.caption });
+        });
+
+        requestAnimationFrame(() => galleryEl.classList.add("show"));
+
+        document.querySelectorAll(".photo").forEach(photo => {
+          photo.addEventListener("click", () => {
+            openLightbox(parseInt(photo.dataset.index));
+          });
+        });
+
+      }, 300);
+    }
+
+    backBtn.addEventListener("click", () => {
+      galleryTitle.innerHTML = "Gallery";
+      backBtn.style.display = "none";
+
+      galleryEl.classList.remove("show");
+
+      setTimeout(() => {
+        galleryEl.innerHTML = "";
+        albumMenu.style.display = "grid";
+        requestAnimationFrame(() => albumMenu.classList.add("show"));
+      }, 300);
     });
 
     /***********************
-     * VIDEOS (Clean YouTube Embeds)
+     * VIDEOS
      ***********************/
     const videoEl = document.getElementById("slides-container-4");
     videos.slice(1).forEach(v => {
-      // Ensure v[0] is just the video ID or normal link
       let videoID = v[0].split("v=")[1] || v[0].split("youtu.be/")[1] || v[0];
-      if (videoID.includes("&")) videoID = videoID.split("&")[0]; // remove extra params
+      if (videoID.includes("&")) videoID = videoID.split("&")[0];
+
       const embedURL = `https://www.youtube.com/embed/${videoID}?controls=1&modestbranding=1&rel=0&iv_load_policy=3`;
+
       videoEl.insertAdjacentHTML("beforeend", `
         <li class="slide">
           <iframe class="videoPlayer" src="${embedURL}" frameborder="0" allowfullscreen></iframe>
@@ -174,12 +255,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     /***********************
-     * ACTIVATE SCROLL ANIMATION
-     ***********************/
-    handleScrollAnimation();
-
-    /***********************
-     * LIGHTBOX FUNCTIONALITY
+     * LIGHTBOX
      ***********************/
     const lightbox = document.getElementById("lightbox");
     const lightboxImg = lightbox.querySelector(".lightbox-img");
@@ -213,17 +289,26 @@ document.addEventListener("DOMContentLoaded", () => {
       openLightbox(currentIndex);
     }
 
-    document.querySelectorAll(".photo").forEach(photo => {
-      photo.addEventListener("click", () => {
-        const index = parseInt(photo.dataset.index);
-        openLightbox(index);
-      });
-    });
-
+    // CLICK EVENTS
     closeBtn.addEventListener("click", closeLightbox);
     lightbox.addEventListener("click", e => { if (e.target === lightbox) closeLightbox(); });
     nextBtn.addEventListener("click", e => { e.stopPropagation(); showNext(); });
     prevBtn.addEventListener("click", e => { e.stopPropagation(); showPrev(); });
 
+    // SWIPE SUPPORT
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    lightbox.addEventListener("touchstart", e => {
+      touchStartX = e.changedTouches[0].screenX;
+    });
+
+    lightbox.addEventListener("touchend", e => {
+      touchEndX = e.changedTouches[0].screenX;
+      if (touchEndX < touchStartX - 50) showNext();
+      if (touchEndX > touchStartX + 50) showPrev();
+    });
+
+    handleScrollAnimation();
   });
 });
